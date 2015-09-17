@@ -7,6 +7,7 @@ from django.conf.urls.defaults import patterns, include, url
 #from SeusPedidos.App.views.index import *
 
 from SeusPedidos.App.views.index import *
+from SeusPedidos.Api.views.login import *
 
 urlpatterns = patterns(
     '',
@@ -19,5 +20,6 @@ urlpatterns = patterns(
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'$', index.as_view()),
+    url(r'$', Index.as_view()),
+    url(r'api/$', Login.as_view())
 )
