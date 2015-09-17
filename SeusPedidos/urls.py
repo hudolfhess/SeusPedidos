@@ -4,6 +4,8 @@ from django.conf.urls.defaults import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
+#from SeusPedidos.App.views.index import *
+
 from SeusPedidos.App.views.index import *
 
 urlpatterns = patterns(
@@ -17,5 +19,5 @@ urlpatterns = patterns(
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'$', ini),
+    url(r'$', index.as_view()),
 )
