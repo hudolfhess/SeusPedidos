@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="indexApp">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Login</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="{{ STATIC_URL }}App/requests.js"></script>
+    <script src="{{ STATIC_URL }}App/index/indexApp.js"></script>
+    <script src="{{ STATIC_URL }}App/index/indexController.js"></script>
 </head>
-<body>
-    <form method="post">
+<body ng-controller="indexController">
+    <form method="post" id="login-form">
         {% csrf_token %}
         <label>
             Usuário:
-            <input type="text" name="username" />
+            <input type="text" name="username" id="input-username" />
         </label>
         <label>
             Senha:
-            <input type="password" name="password" />
+            <input type="password" name="password" id="input-password" />
         </label>
-        <input type="submit" value="Entrar" />
+        <input type="button" value="Entrar" ng-click="doLogin()" />
     </form>
 </body>
 </html>

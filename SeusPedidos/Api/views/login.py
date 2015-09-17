@@ -1,6 +1,7 @@
 from django.http import HttpResponse
-from SeusPedidos.App.core.auth import Auth
 from django.views.generic import View
+from SeusPedidos.App.core.auth import Auth
+import json
 
 class Login(View):
     def post(self, request):
@@ -9,7 +10,17 @@ class Login(View):
             'username': request.POST.get('username'),
             'password': request.POST.get('password')
         }
+
         if (authObj.isValid(postData) == True):
-            return HttpResponse("{success: 1, authToken: 'tokenauth'}")
+            result = {
+                'success': 1,
+                'authToken': 'AuthToken',
+            }
         else:
-            return HttpResponse("{success: 0, message: 'Usuario e/ou senha nao conferem.'}")
+            result = {
+                'success': 0,
+                'message': 'Usuario e/ou senha estao incorretos.'
+            }
+        return HttpResponse(
+            json.dumps(result)
+        )

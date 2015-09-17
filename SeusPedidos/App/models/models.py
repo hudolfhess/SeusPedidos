@@ -1,1 +1,1 @@
-import user
+import cliente, pedido, produto, produto_pedido, user
