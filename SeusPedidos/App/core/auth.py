@@ -1,8 +1,9 @@
+import hashlib
+
 from importlib import import_module
 from django.conf import settings
 from SeusPedidos.App.models.user import User
 
-import hashlib
 
 class Auth:
     def isValid(self, data):

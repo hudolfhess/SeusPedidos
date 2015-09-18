@@ -9,11 +9,11 @@ class Produto(View):
         id = request.GET.get('id')
         try:
             if (id == None):
-                data = ProdutoModel.objects.all()
-                result = []
-                if (data != None):
-                    for row in data:
-                        result.append(row)
+                result = ProdutoModel.objects.all()
+                #result = []
+                #if (data != None):
+                #    for x in range(0, len(data)):
+                #        result.append(data[x])
             else:
                 result = ProdutoModel.objects.get(id=id)
         except Exception:
@@ -26,11 +26,24 @@ class Produto(View):
     def post(self, request):
         #@TODO FAZER VALIDACAO
 
-        ProdutoModel.objects.create(
+        #try:
+        produto = ProdutoModel.objects.create(
             nome=request.POST.get('nome'),
             valor=request.POST.get('valor')
         )
+        if (produto != None):
+            result = {
+                'success': 1
+            }
+        else:
+            result = {
+                'success': 0
+            }
+        #except Exception:
+        #    result = {
+        #        'success': 0
+        #    }
 
         return HttpResponse(
-            'aaaa'
+            json.dumps(result)
         )

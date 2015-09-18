@@ -8,20 +8,22 @@
     <script src="{{ STATIC_URL }}App/produto/produtoCtrl.js"></script>
 </head>
 <body ng-controller="produtoCtrl">
-    <div >
+    <div>
         <p>Nome : <input type="text" ng-model="produto.nome" name="nome"></p>
         <p>Valor : <input type="text" ng-model="produto.valor" name="valor"></p>
         <button ng-click="adicionaProduto()">Adicionar</button>
         <table>
             <thead>
+                <th>Id</th>
                 <th>Nome</th>
                 <th>Valor</th>
             </thead>
             <tr ng-repeat="produto in produtos">
-                <td>{{produto.nome}}</td>
-                <td>{{produto.valor}}</td>
+                <td>{[{produto.id}]}</td>
+                <td>{[{produto.nome}]}</td>
+                <td>{[{produto.valor}]}</td>
                 <td>
-                    <button ng-click="removerProduto($index)">Remover</button>
+                    <button ng-click="removerProduto($index, produto.id)">Remover</button>
                 </td>
             </tr>
         </table>
