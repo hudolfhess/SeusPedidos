@@ -27,6 +27,11 @@ function showMessage(result) {
         $('<div class="alert alert-dismissible alert-success"><button type="button" class="close" data-dismiss="alert">X</button>Dados salvos com sucesso!</div>').insertAfter('form').fadeOut(2000);
     } else {
         $('<div class="alert alert-dismissible alert-warning"><button type="button" class="close" data-dismiss="alert">X</button>Oops! Nao foi possivel salvar os dados.</div>').insertAfter('form').fadeOut(6000);
+        if (typeof result.data.error != 'undefined') {
+            for (key in result.data.error) {
+                $('input[name=' + key + ']').parents('.form-group').addClass('has-error');
+            }
+        }
     }
 }
 

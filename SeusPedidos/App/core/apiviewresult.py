@@ -3,18 +3,20 @@ import json
 class ApiViewResult:
     def success(self, data):
         result = {
-            'success': 1
+            'success': 1,
+            'data': None
         }
         if (data != None):
-            result.data = data
+            result['data'] = data
         return result
 
     def error(self, error):
         result = {
-            'success': 0
+            'success': 0,
+            'error': None
         }
         if (error != None):
-            result.error = error
+            result['error'] = error
         return result
 
     def parseToJson(self, result):

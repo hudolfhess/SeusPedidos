@@ -1,8 +1,11 @@
+import json
+
 from django.http import HttpResponse
 from django.core import serializers
 from SeusPedidos.App.models.produto import Produto as ProdutoModel
 from SeusPedidos.App.core.apiview import ApiView
-import json
+from SeusPedidos.App.core.form.produto import ProdutoForm
+
 
 class Produto(ApiView):
 
@@ -21,29 +24,34 @@ class Produto(ApiView):
         )
 
     def post(self, request):
-        #@TODO FAZER VALIDACAO
-        id = request.POST.get('id')
-        if (id == None):
-            try:
-                produto = ProdutoModel.objects.create(
-                    nome=request.POST.get('nome'),
-                    valor=request.POST.get('valor')
-                )
-                if (produto != None):
-                    result = self._apiresult.success(None)
-                else:
+        form = ProdutoForm(request.POST)
+        if (form.is_valid() == True):
+            id = request.POST.get('id')
+            if (id == None):
+                try:
+                    produto = ProdutoModel.objects.create(
+                        nome=request.POST.get('nome'),
+                        valor=request.POST.get('valor')
+                    )
+                    if (produto != None):
+                        result = self._apiresult.success(None)
+                    else:
+                        result = self._apiresult.error(None)
+                except Exception:
                     result = self._apiresult.error(None)
-            except Exception:
-                result = self._apiresult.error(None)
+            else:
+                try:
+                    produto = ProdutoModel.objects.get(id=id)
+                    produto.nome = request.POST.get('nome', produto.nome)
+                    produto.valor = request.POST.get('valor', produto.valor)
+                    produto.save()
+                    result = self._apiresult.success(None)
+                except Exception:
+                    result = self._apiresult.error(None)
         else:
-            try:
-                produto = ProdutoModel.objects.get(id=id)
-                produto.nome = request.POST.get('nome', produto.nome)
-                produto.valor = request.POST.get('valor', produto.valor)
-                produto.save()
-                result = self._apiresult.success(None)
-            except Exception:
-                result = self._apiresult.error(None)
+            result = self._apiresult.error(
+                form.errors
+            )
 
         return HttpResponse(
             json.dumps(result)

@@ -35,6 +35,7 @@ app.controller("produtoCtrl", function($scope, $http) {
             'post',
             $scope.produto,
             function(r) {
+                $('form .form-group').removeClass('has-error');
                 if (r.data.success == 1) {
                     $scope.carregar();
                     $scope.produto = {};
