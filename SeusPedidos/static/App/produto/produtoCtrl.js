@@ -50,8 +50,8 @@ app.controller("produtoCtrl", function($scope, $http) {
         $('form').find('input[type=submit]').val('Editar produto');
     };
 
-    $scope.removerProduto = function(index, id) {
-        if (confirm("Tem certeza que deseja remover o produto #" + id + " da lista?")) {
+    $scope.removerProduto = function(index, id, name) {
+        if (confirm("Tem certeza que deseja remover o produto " + name + " da lista?")) {
             requests(
                 $http,
                 '/api/produto',

@@ -9,35 +9,33 @@
 <body ng-controller="produtoCtrl">
     <div>
         <h1>Produtos</h1>
-        <form ng-submit="adicionaProduto()">
+        <form name="form_produto" ng-submit="adicionaProduto()">
             <input type="hidden" id="produtoId" ng-model="produto.id" name="id" />
             <div class="form-group">
                 <label class="control-label" for="produtoNome">Nome:</label>
-                <input class="form-control" id="produtoNome" type="text" ng-model="produto.nome" name="nome" />
+                <input class="form-control" id="produtoNome" type="text" ng-model="produto.nome" name="nome" ng-required="true"/>
             </div>
             <div class="form-group">
                 <label class="control-label" for="produtoValor">Valor:</label>
-                <input class="form-control" id="produtoValor" type="text" ng-model="produto.valor" name="valor" />
+                <input class="form-control" id="produtoValor" min="0" type="number" ng-model="produto.valor" name="valor" ng-required="true"/>
             </div>
-            <input type="submit" value="Adicionar" class="btn btn-success" />
+            <input type="submit" value="Adicionar" class="btn btn-success" ng-disabled="form_produto.$invalid"/>
         </form>
         <h1>Lista de produtos</h1>
         <table class="table table-striped table-hover">
             <thead>
                 <tr class="info">
-                    <td width="50px">Id</td>
                     <td>Nome</td>
                     <td width="300px">Valor</td>
                     <td width="140px">Opcoes</td>
                 </tr>
             </thead>
             <tr ng-repeat="produto in produtos">
-                <td>{[{produto.id}]}</td>
                 <td>{[{produto.nome}]}</td>
                 <td>{[{produto.valor}]}</td>
                 <td>
                     <button ng-click="editarProduto($index, produto.id)" class="btn btn-info btn-xs">Editar</button>
-                    <button ng-click="removerProduto($index, produto.id)" class="btn btn-danger btn-xs">Remover</button>
+                    <button ng-click="removerProduto($index, produto.id, produto.nome)" class="btn btn-danger btn-xs">Remover</button>
                 </td>
             </tr>
         </table>
