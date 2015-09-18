@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.core import serializers
 from SeusPedidos.App.models.produto import Produto as ProdutoModel
 from SeusPedidos.App.core.apiview import ApiView
-from SeusPedidos.App.core.form.produto import ProdutoForm
+from SeusPedidos.App.form.produto import ProdutoForm
 
 
 class Produto(ApiView):
