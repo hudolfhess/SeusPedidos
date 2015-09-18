@@ -8,10 +8,11 @@
 <body ng-controller="clienteCtrl">
 
 <div >
- 	<p>Nome : <input type="text" ng-model="cliente.nome" name="nome"></p>
-    <p>E-mail : <input type="text" ng-model="cliente.email" name="email"></p>
-    <button ng-click="adicionaCliente()">Adicionar</button>
-
+ 	<form name="cliente_form" class="simple-form">
+        <p>Nome : <input type="text" ng-model="cliente.nome" name="cliente_nome" ng-required="true"></p>
+        <p>E-mail : <input type="email" ng-model="cliente.email" name="cliente_email" ng-required="true"></p>
+        <button type="submit" ng-click="adicionaCliente()" ng-disabled="cliente_form.$invalid">Adicionar</button>
+    </form>
 
     <table>
         <thead>
