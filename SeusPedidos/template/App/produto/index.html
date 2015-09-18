@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html lang="en-US" ng-app="produtoApp">
 <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src="{{ STATIC_URL }}App/requests.js"></script>
+    {% include "App/template/header.html" %}
+    {% include "App/template/bootstrap.html" %}
     <script src="{{ STATIC_URL }}App/produto/produtoApp.js"></script>
     <script src="{{ STATIC_URL }}App/produto/produtoCtrl.js"></script>
 </head>
 <body ng-controller="produtoCtrl">
     <div>
-        <p>Nome : <input type="text" ng-model="produto.nome" name="nome"></p>
-        <p>Valor : <input type="text" ng-model="produto.valor" name="valor"></p>
-        <button ng-click="adicionaProduto()">Adicionar</button>
-        <table>
+        <h1>Produtos</h1>
+        <form ng-submit="adicionaProduto()">
+            <input type="hidden" id="produtoId" ng-model="produto.id" name="id" />
+            <div class="form-group">
+                <label class="control-label" for="produtoNome">Nome:</label>
+                <input class="form-control" id="produtoNome" type="text" ng-model="produto.nome" name="nome" />
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="produtoValor">Valor:</label>
+                <input class="form-control" id="produtoValor" type="text" ng-model="produto.valor" name="valor" />
+            </div>
+            <input type="submit" value="Adicionar" class="btn btn-success" />
+        </form>
+        <h1>Lista de produtos</h1>
+        <table class="table table-striped table-hover">
             <thead>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Valor</th>
+                <tr class="info">
+                    <td width="50px">Id</td>
+                    <td>Nome</td>
+                    <td width="300px">Valor</td>
+                    <td width="140px">Opcoes</td>
+                </tr>
             </thead>
             <tr ng-repeat="produto in produtos">
                 <td>{[{produto.id}]}</td>
                 <td>{[{produto.nome}]}</td>
                 <td>{[{produto.valor}]}</td>
                 <td>
-                    <button ng-click="removerProduto($index, produto.id)">Remover</button>
+                    <button ng-click="editarProduto($index, produto.id)" class="btn btn-info btn-xs">Editar</button>
+                    <button ng-click="removerProduto($index, produto.id)" class="btn btn-danger btn-xs">Remover</button>
                 </td>
             </tr>
         </table>

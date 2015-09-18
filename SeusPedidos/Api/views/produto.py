@@ -1,19 +1,16 @@
 from django.http import HttpResponse
-from django.views.generic import View
-from SeusPedidos.App.models.produto import Produto as ProdutoModel
 from django.core import serializers
+from SeusPedidos.App.models.produto import Produto as ProdutoModel
+from SeusPedidos.App.core.apiview import ApiView
 import json
 
-class Produto(View):
+class Produto(ApiView):
+
     def get(self, request):
         id = request.GET.get('id')
         try:
             if (id == None):
                 result = ProdutoModel.objects.all()
-                #result = []
-                #if (data != None):
-                #    for x in range(0, len(data)):
-                #        result.append(data[x])
             else:
                 result = ProdutoModel.objects.get(id=id)
         except Exception:
@@ -25,25 +22,62 @@ class Produto(View):
 
     def post(self, request):
         #@TODO FAZER VALIDACAO
-
-        #try:
-        produto = ProdutoModel.objects.create(
-            nome=request.POST.get('nome'),
-            valor=request.POST.get('valor')
-        )
-        if (produto != None):
-            result = {
-                'success': 1
-            }
+        id = request.POST.get('id')
+        if (id == None):
+            try:
+                produto = ProdutoModel.objects.create(
+                    nome=request.POST.get('nome'),
+                    valor=request.POST.get('valor')
+                )
+                if (produto != None):
+                    result = self._apiresult.success(None)
+                else:
+                    result = self._apiresult.error(None)
+            except Exception:
+                result = self._apiresult.error(None)
         else:
-            result = {
-                'success': 0
-            }
-        #except Exception:
-        #    result = {
-        #        'success': 0
-        #    }
+            try:
+                produto = ProdutoModel.objects.get(id=id)
+                produto.nome = request.POST.get('nome', produto.nome)
+                produto.valor = request.POST.get('valor', produto.valor)
+                produto.save()
+                result = self._apiresult.success(None)
+            except Exception:
+                result = self._apiresult.error(None)
 
         return HttpResponse(
             json.dumps(result)
         )
+
+    def delete(self, request):
+        id = request.GET.get('id')
+        try:
+            produto = ProdutoModel.objects.get(id=id)
+            produto.delete()
+            result = self._apiresult.success(None)
+        except:
+            result = self._apiresult.error(None)
+        return HttpResponse(
+            json.dumps(result)
+        )
+
+    '''
+    def put(self, request):
+        #@TODO FAZER VALIDACAO
+
+        id = request.POST.get('id')
+        return HttpResponse(request.PUT.get('id'))
+        print id
+        #try:
+        produto = ProdutoModel.objects.get(id=id)
+        produto.nome = request.POST.get('nome')
+        produto.valor = request.POST.get('valor')
+        produto.save()
+        result = self._apiresult.success(None)
+        #except Exception:
+        #    result = self._apiresult.error(None)
+
+        return HttpResponse(
+            json.dumps(result)
+        )
+    '''

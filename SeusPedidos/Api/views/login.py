@@ -1,10 +1,11 @@
 from django.http import HttpResponse
 from django.views.generic import View
-from SeusPedidos.App.core.auth import Auth
 import json
 
 class Login(View):
     def post(self, request):
+        return 'a'
+        '''
         authObj = Auth()
         postData = {
             'username': request.POST.get('username'),
@@ -23,4 +24,4 @@ class Login(View):
             }
         return HttpResponse(
             json.dumps(result)
-        )
+        )'''
