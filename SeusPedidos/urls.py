@@ -9,6 +9,7 @@ from SeusPedidos.App.views.produto import *
 # API IMPORTS
 from SeusPedidos.Api.views.login import *
 from SeusPedidos.Api.views.produto import Produto as ApiProduto
+from SeusPedidos.Api.views.cliente import Cliente as ApiCliente
 
 urlpatterns = patterns(
     '',
@@ -20,4 +21,5 @@ urlpatterns = patterns(
     # API URLS
     url(r'^api/login$', Login.as_view()),
     url(r'^api/produto$', ApiProduto.as_view()),
+    url(r'^api/cliente', ApiCliente.as_view()),
 )

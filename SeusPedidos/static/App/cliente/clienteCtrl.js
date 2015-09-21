@@ -1,9 +1,9 @@
 /**
  * Created by hcassus on 9/17/15.
  */
-app.controller("produtoCtrl", function($scope, $http) {
+app.controller("clienteCtrl", function($scope, $http) {
 
-    $scope.produtos = [];
+    $scope.clientes = [];
 
     $http.defaults.xsrfCookieName = 'csrftoken';
     $http.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -11,28 +11,28 @@ app.controller("produtoCtrl", function($scope, $http) {
     $scope.carregar = function() {
         return requests(
             $http,
-            '/api/produto',
+            '/api/cliente',
             'get',
             null,
             function (r) {
                 for (i = 0; i < r.data.length; i++) {
-                    $scope.produtos[i] = sanitizeRequestData(r.data[i]);
+                    $scope.clientes[i] = sanitizeRequestData(r.data[i]);
                 }
             }
         );
     };
 
-    $scope.adicionaProduto = function() {
+    $scope.adicionaCliente  = function() {
         requests(
             $http,
-            '/api/produto',
+            '/api/cliente',
             'post',
-            $scope.produto,
+            $scope.cliente,
             function(r) {
                 $('form .form-group').removeClass('has-error');
                 if (r.data.success == 1) {
                     $scope.carregar();
-                    $scope.produto = {};
+                    $scope.cliente = {};
                     $('form').find('input[type=submit]').val('Adicionar');
                 }
                 showMessage(r);
@@ -40,24 +40,25 @@ app.controller("produtoCtrl", function($scope, $http) {
         );
     };
 
-    $scope.editarProduto = function(index, id) {
-        $scope.produto = $scope.produtos[index];
-        $('form').find('input[type=submit]').val('Editar produto');
+    $scope.editarCliente = function(index, id) {
+        $scope.cliente = $scope.clientes[index];
+        $('form').find('input[type=submit]').val('Editar cliente');
     };
 
-    $scope.removerProduto = function(index, id, name) {
-        if (confirm("Tem certeza que deseja remover o produto " + name + " da lista?")) {
+    $scope.removerCliente = function(index, id, name) {
+        if (confirm("Tem certeza que deseja remover o cliente " + name + " da lista?")) {
             requests(
                 $http,
-                '/api/produto',
+                '/api/cliente',
                 'delete',
                 {id: id},
                 function (r) {
-                    $scope.produtos.splice(index, 1);
+                    $scope.clientes.splice(index, 1);
                 }
             );
         }
-    };
+    }
 
     $scope.carregar();
+
 });

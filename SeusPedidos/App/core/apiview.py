@@ -1,6 +1,7 @@
 from django.views.generic import View
 from SeusPedidos.App.core.apiviewresult import ApiViewResult
 
+
 class ApiView(View):
 
     _apiresult = None

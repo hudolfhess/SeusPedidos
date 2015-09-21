@@ -2,21 +2,21 @@ import json
 
 from django.http import HttpResponse
 from django.core import serializers
-from SeusPedidos.App.models.produto import Produto as ProdutoModel
+from SeusPedidos.App.models.cliente import Cliente as ClienteModel
 from SeusPedidos.App.core.apiview import ApiView
-from SeusPedidos.App.form.produto import ProdutoForm
+from SeusPedidos.App.form.cliente import ClienteForm
 
 
-class Produto(ApiView):
+class Cliente(ApiView):
 
     def get(self, request):
         id = request.GET.get('id')
         try:
             if not id:
-                result = ProdutoModel.objects.all()
+                result = ClienteModel.objects.all()
             else:
-                result = ProdutoModel.objects.get(id=id)
-        except ProdutoModel.DoesNotExist:
+                result = ClienteModel.objects.get(id=id)
+        except ClienteModel.DoesNotExist:
             result = {}
 
         return HttpResponse(
@@ -24,16 +24,16 @@ class Produto(ApiView):
         )
 
     def post(self, request):
-        form = ProdutoForm(request.POST)
+        form = ClienteForm(request.POST)
         if form.is_valid():
             id = request.POST.get('id')
             if (id == None):
                 try:
-                    produto = ProdutoModel.objects.create(
+                    cliente = ClienteModel.objects.create(
                         nome=request.POST.get('nome'),
-                        valor=request.POST.get('valor')
+                        email=request.POST.get('email')
                     )
-                    if (produto != None):
+                    if (cliente != None):
                         result = self._apiresult.success(None)
                     else:
                         result = self._apiresult.error(None)
@@ -41,10 +41,10 @@ class Produto(ApiView):
                     result = self._apiresult.error(None)
             else:
                 try:
-                    produto = ProdutoModel.objects.get(id=id)
-                    produto.nome = request.POST.get('nome', produto.nome)
-                    produto.valor = request.POST.get('valor', produto.valor)
-                    produto.save()
+                    cliente = ClienteModel.objects.get(id=id)
+                    cliente.nome = request.POST.get('nome', cliente.nome)
+                    cliente.email = request.POST.get('email', cliente.email)
+                    cliente.save()
                     result = self._apiresult.success(None)
                 except Exception:
                     result = self._apiresult.error(None)
@@ -60,8 +60,8 @@ class Produto(ApiView):
     def delete(self, request):
         id = request.GET.get('id')
         try:
-            produto = ProdutoModel.objects.get(id=id)
-            produto.delete()
+            cliente = ClienteModel.objects.get(id=id)
+            cliente.delete()
             result = self._apiresult.success(None)
         except:
             result = self._apiresult.error(None)
