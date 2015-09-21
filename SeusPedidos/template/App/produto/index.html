@@ -11,6 +11,7 @@
     <div>
         <h1>Produtos</h1>
         <form name="form_produto" ng-submit="adicionaProduto()">
+            {% csrf_token %}
             <input type="hidden" id="produtoId" ng-model="produto.id" name="id" />
             <div class="form-group">
                 <label class="control-label" for="produtoNome">Nome:</label>
@@ -22,7 +23,7 @@
             </div>
             <input type="submit" value="Adicionar" class="btn btn-success" ng-disabled="form_produto.$invalid"/>
         </form>
-        <h1>Lista de produtos</h1>
+        <h2>Lista de produtos</h2>
         <table class="table table-striped table-hover">
             <thead>
                 <tr class="info">

@@ -2,9 +2,9 @@ from django.conf.urls.defaults import patterns, include, url
 
 # WEB APP IMPORTS
 import SeusPedidos
-from SeusPedidos.App.views.index import *
-from SeusPedidos.App.views.cliente import *
-from SeusPedidos.App.views.produto import *
+from SeusPedidos.App.views.index import Index
+from SeusPedidos.App.views.cliente import Cliente
+from SeusPedidos.App.views.produto import Produto
 
 # API IMPORTS
 from SeusPedidos.Api.views.login import *

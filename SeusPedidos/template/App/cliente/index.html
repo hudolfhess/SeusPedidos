@@ -11,6 +11,7 @@
     <div>
         <h1>Clientes</h1>
         <form name="cliente_form" ng-submit="adicionaCliente()" class="simple-form">
+            {% csrf_token %}
             <input type="hidden" id="clienteId" ng-model="cliente.id" name="id" />
             <div class="form-group">
                 <label class="control-label" for="clienteNome">Nome:</label>
