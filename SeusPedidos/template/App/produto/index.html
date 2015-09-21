@@ -7,6 +7,7 @@
     <script src="{{ STATIC_URL }}App/produto/produtoCtrl.js"></script>
 </head>
 <body ng-controller="produtoCtrl">
+    {% include "App/template/top.html" %}
     <div>
         <h1>Produtos</h1>
         <form name="form_produto" ng-submit="adicionaProduto()">
