@@ -23,6 +23,12 @@ app.controller("produtoCtrl", function($scope, $http) {
     };
 
     $scope.adicionaProduto = function() {
+        /*
+        var requestMethod = 'post';
+        if (typeof $scope.produto != 'undefined' && typeof $scope.produto.id != 'undefined') {
+            requestMethod = 'put';
+        }
+        */
         requests(
             $http,
             '/api/produto',

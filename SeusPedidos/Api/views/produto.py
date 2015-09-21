@@ -12,11 +12,11 @@ class Produto(ApiView):
     def get(self, request):
         id = request.GET.get('id')
         try:
-            if not id:
+            if (id == None):
                 result = ProdutoModel.objects.all()
             else:
                 result = ProdutoModel.objects.get(id=id)
-        except ProdutoModel.DoesNotExist:
+        except Exception:
             result = {}
 
         return HttpResponse(
@@ -25,7 +25,7 @@ class Produto(ApiView):
 
     def post(self, request):
         form = ProdutoForm(request.POST)
-        if form.is_valid():
+        if (form.is_valid() == True):
             id = request.POST.get('id')
             if (id == None):
                 try:
@@ -68,3 +68,24 @@ class Produto(ApiView):
         return HttpResponse(
             json.dumps(result)
         )
+
+    '''
+    def put(self, request):
+        #@TODO FAZER VALIDACAO
+
+        id = request.POST.get('id')
+        return HttpResponse(request.PUT.get('id'))
+        print id
+        #try:
+        produto = ProdutoModel.objects.get(id=id)
+        produto.nome = request.POST.get('nome')
+        produto.valor = request.POST.get('valor')
+        produto.save()
+        result = self._apiresult.success(None)
+        #except Exception:
+        #    result = self._apiresult.error(None)
+
+        return HttpResponse(
+            json.dumps(result)
+        )
+    '''
