@@ -1,3 +1,5 @@
+import os
+
 # Django settings for SeusPedidos project.
 
 DEBUG = True
@@ -71,9 +73,14 @@ STATIC_URL = '/static/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
+
+
+PROJECT_ROOT = os.path.dirname(__file__)
+
+
 # Additional locations of static files
 STATICFILES_DIRS = (
-    '/Users/hudolfhess/PycharmProjects/SeusPedidos/SeusPedidos/static',
+    PROJECT_ROOT + '/static',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -108,7 +115,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'SeusPedidos.urls'
 
 TEMPLATE_DIRS = (
-    '/Users/hudolfhess/PycharmProjects/SeusPedidos/SeusPedidos/template'
+    PROJECT_ROOT + '/template'
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -123,6 +130,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'App.models',
     'App.testes_selenium',
+    'App.testes_unitarios'
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
