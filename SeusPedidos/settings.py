@@ -1,5 +1,8 @@
 import os
+#import djcelery
 
+
+#djcelery.setup_loader()
 # Django settings for SeusPedidos project.
 
 DEBUG = True
@@ -128,9 +131,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djcelery',
     'App.models',
+    'App.views',
     'App.testes_selenium',
-    'App.testes_unitarios'
+    'App.testes_unitarios',
+    #'CeleryTasks',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -138,6 +144,10 @@ INSTALLED_APPS = (
 )
 
 TEST_RUNNER = 'discover_runner.DiscoverRunner'
+
+#BROKER_URL = 'redis://localhost:6379/0'
+#CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+#CELERY_IMPORTS=("send_email")
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
