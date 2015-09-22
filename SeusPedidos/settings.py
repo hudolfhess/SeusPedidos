@@ -73,7 +73,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    '/Users/hcassus/PycharmProjects/SeusPedidos/SeusPedidos/static',
+    '/Users/hudolfhess/PycharmProjects/SeusPedidos/SeusPedidos/static',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -108,7 +108,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'SeusPedidos.urls'
 
 TEMPLATE_DIRS = (
-    '/Users/hcassus/PycharmProjects/SeusPedidos/SeusPedidos/template'
+    '/Users/hudolfhess/PycharmProjects/SeusPedidos/SeusPedidos/template'
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

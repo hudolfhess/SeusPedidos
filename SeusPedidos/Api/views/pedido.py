@@ -3,8 +3,8 @@ import json
 from django.http import HttpResponse
 from SeusPedidos.App.bo.pedidobo import PedidoBO
 from SeusPedidos.App.core.apiview import ApiView
-from SeusPedidos.App.form.pedido import PedidoForm
 from SeusPedidos.App.core import parser
+from SeusPedidos.App.validation.pedido import PedidoValidation
 
 
 class Pedido(ApiView):
@@ -30,8 +30,8 @@ class Pedido(ApiView):
         )
 
     def post(self, request):
-        form = PedidoForm(request.POST)
-        if (form.is_valid() == True):
+        validation = PedidoValidation(request.POST)
+        if (validation.is_valid() == True):
             id = request.POST.get('id')
             if (id == None):
                 data = parser.parse(request.POST.urlencode())
@@ -40,11 +40,14 @@ class Pedido(ApiView):
                 else:
                     result = self._apiresult.error(None)
             else:
-                #EDITAR
-                result = self._apiresult.error(None)
+                data = parser.parse(request.POST.urlencode())
+                if self.resultBO.edit(data['id'], data):
+                    result = self._apiresult.success(None)
+                else:
+                    result = self._apiresult.error(None)
         else:
             result = self._apiresult.error(
-                form.errors
+                validation.errors
             )
 
         return HttpResponse(
