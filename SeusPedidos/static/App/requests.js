@@ -16,7 +16,7 @@ function sanitizeRequestData(data) {
     }
     if (data.fields != undefined && typeof data.fields) {
         for (key in data.fields) {
-            nData[key] = data.fields[key]
+            nData[key] = data.fields[key];
         }
     }
     return nData;

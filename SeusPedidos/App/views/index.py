@@ -4,4 +4,4 @@ from django.http import HttpResponseRedirect
 
 class Index(View):
     def get(self, request):
-        return HttpResponseRedirect('/cliente')
+        return HttpResponseRedirect('/pedido')

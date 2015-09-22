@@ -68,24 +68,3 @@ class Produto(ApiView):
         return HttpResponse(
             json.dumps(result)
         )
-
-    '''
-    def put(self, request):
-        #@TODO FAZER VALIDACAO
-
-        id = request.POST.get('id')
-        return HttpResponse(request.PUT.get('id'))
-        print id
-        #try:
-        produto = ProdutoModel.objects.get(id=id)
-        produto.nome = request.POST.get('nome')
-        produto.valor = request.POST.get('valor')
-        produto.save()
-        result = self._apiresult.success(None)
-        #except Exception:
-        #    result = self._apiresult.error(None)
-
-        return HttpResponse(
-            json.dumps(result)
-        )
-    '''
