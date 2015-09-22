@@ -8,10 +8,10 @@ __author__ = 'hcassus'
 class TestesProduto(unittest.TestCase):
 
     @classmethod
-    def setUpClass(cls):
-        cls.driver = webdriver.Firefox()
-        cls.driver.implicitly_wait(10)
-        cls.acoes_produto = AcoesProduto(cls.driver)
+    def setUpClass(self):
+        self.driver = webdriver.Firefox()
+        self.driver.implicitly_wait(10)
+        self.acoes_produto = AcoesProduto(self.driver)
 
     def teste_cadastro_produto_valido(self):
         self.acoes_produto\

@@ -1,14 +1,11 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from SeusPedidos.App.testes_selenium.paginas.pagina_generica import PaginaGenerica
+from SeusPedidos.App.testes_selenium.paginas.pagina_base import PaginaBase
 
 __author__ = 'hcassus'
 
-class PaginaCliente(PaginaGenerica):
-
-    def __init__(self, driver):
-        self.driver = driver
+class PaginaCliente(PaginaBase):
 
     locator_nome = (By.ID,'clienteNome')
     locator_email = (By.ID,'clienteEmail')
@@ -54,7 +51,7 @@ class PaginaCliente(PaginaGenerica):
         return valor_ultimo_produto.text
 
     def remover_ultimo_cliente(self):
-        elemento_tabela = self.driver.find_element(*PaginaCliente.locator_remover_ultimo_cliente)
-        elemento_tabela.click()
+        elemento_ultimo_cliente = self.driver.find_element(*PaginaCliente.locator_remover_ultimo_cliente)
+        elemento_ultimo_cliente.click()
         self.driver.switch_to_alert().accept()
-        self.wait.until(EC.staleness_of(elemento_tabela))
+        self.wait.until(EC.staleness_of(elemento_ultimo_cliente))

@@ -1,14 +1,10 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
-from SeusPedidos.App.testes_selenium.paginas.pagina_generica import PaginaGenerica
+from SeusPedidos.App.testes_selenium.paginas.pagina_base import PaginaBase
 
 __author__ = 'hcassus'
 
-class PaginaProduto(PaginaGenerica):
-
-    def __init__(self, driver):
-        self.driver = driver
+class PaginaProduto(PaginaBase):
 
     locator_nome = (By.ID,'produtoNome')
     locator_valor = (By.ID,'produtoValor')
@@ -17,11 +13,6 @@ class PaginaProduto(PaginaGenerica):
     locator_nome_ultimo_produto = (By.XPATH, '//tr[@ng-repeat="produto in produtos"][last()]/td[1]')
     locator_valor_ultimo_produto = (By.XPATH, '//tr[@ng-repeat="produto in produtos"][last()]/td[2]')
     locator_remover_ultimo_produto = (By.XPATH, '//tr[@ng-repeat="produto in produtos"][last()]/td[3]/button[text()="Remover"]')
-
-    def __init__(self, driver):
-        self.driver = driver
-        self.wait = WebDriverWait(driver,10)
-
 
 
     def acessar(self):
@@ -56,8 +47,7 @@ class PaginaProduto(PaginaGenerica):
         return valor_ultimo_produto.text
 
     def remover_ultimo_produto(self):
-        elemento_tabela = self.driver.find_element(*PaginaProduto.locator_remover_ultimo_produto)
-        elemento_tabela.click()
+        elemento_ultimo_produto = self.driver.find_element(*PaginaProduto.locator_remover_ultimo_produto)
+        elemento_ultimo_produto.click()
         self.driver.switch_to_alert().accept()
-        self.wait.until(EC.staleness_of(elemento_tabela))
-
+        self.wait.until(EC.staleness_of(elemento_ultimo_produto))

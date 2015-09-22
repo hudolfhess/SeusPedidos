@@ -8,10 +8,10 @@ __author__ = 'hcassus'
 class TestesCliente(unittest.TestCase):
 
     @classmethod
-    def setUpClass(cls):
-        cls.driver = webdriver.Firefox()
-        cls.driver.implicitly_wait(10)
-        cls.acoes_cliente = AcoesCliente(cls.driver)
+    def setUpClass(self):
+        self.driver = webdriver.Firefox()
+        self.driver.implicitly_wait(10)
+        self.acoes_cliente = AcoesCliente(self.driver)
 
 
     def teste_cadastro_cliente_valido(self):
@@ -32,5 +32,5 @@ class TestesCliente(unittest.TestCase):
 
 
     @classmethod
-    def tearDownClass(cls):
-        cls.driver.quit()
+    def tearDownClass(self):
+        self.driver.quit()
