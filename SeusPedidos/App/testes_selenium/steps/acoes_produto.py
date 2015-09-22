@@ -1,5 +1,5 @@
 from time import sleep
-from SeusPedidos.App.test.paginas.pagina_produto import PaginaProduto
+from SeusPedidos.App.testes_selenium.paginas.pagina_produto import PaginaProduto
 
 __author__ = 'hcassus'
 

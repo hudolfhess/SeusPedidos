@@ -1,4 +1,4 @@
-from SeusPedidos.App.test.paginas.pagina_cliente import PaginaCliente
+from SeusPedidos.App.testes_selenium.paginas.pagina_cliente import PaginaCliente
 
 __author__ = 'hcassus'
 

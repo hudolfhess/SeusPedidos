@@ -1,6 +1,6 @@
 from django.utils import unittest
 from selenium import webdriver
-from SeusPedidos.App.test.steps.acoes_cliente import AcoesCliente
+from SeusPedidos.App.testes_selenium.steps.acoes_cliente import AcoesCliente
 
 __author__ = 'hcassus'
 

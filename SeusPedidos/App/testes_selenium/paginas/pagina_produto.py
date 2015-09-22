@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from SeusPedidos.App.test.paginas.pagina_generica import PaginaGenerica
+from SeusPedidos.App.testes_selenium.paginas.pagina_generica import PaginaGenerica
 
 __author__ = 'hcassus'
 
