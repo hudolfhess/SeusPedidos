@@ -73,7 +73,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    '/Users/hudolfhess/PycharmProjects/SeusPedidos/SeusPedidos/static',
+    '/Users/hcassus/PycharmProjects/SeusPedidos/SeusPedidos/static',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -108,7 +108,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'SeusPedidos.urls'
 
 TEMPLATE_DIRS = (
-    '/Users/hudolfhess/PycharmProjects/SeusPedidos/SeusPedidos/template'
+    '/Users/hcassus/PycharmProjects/SeusPedidos/SeusPedidos/template'
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -122,11 +122,14 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'App.models',
+    'App.test',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+TEST_RUNNER = 'discover_runner.DiscoverRunner'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
