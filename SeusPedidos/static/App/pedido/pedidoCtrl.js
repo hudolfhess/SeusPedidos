@@ -12,6 +12,20 @@ app.controller("pedidoCtrl", function($scope, $http) {
     $http.defaults.xsrfCookieName = 'csrftoken';
     $http.defaults.xsrfHeaderName = 'X-CSRFToken';
 
+    $scope.carregarPedido = function(id) {
+        return requests(
+            $http,
+            '/api/pedido',
+            'get',
+            {
+                id: id
+            },
+            function (r) {
+                $scope.pedido = r.data;
+            }
+        );
+    };
+
     $scope.carregarPedidos = function() {
         return requests(
             $http,
@@ -70,19 +84,21 @@ app.controller("pedidoCtrl", function($scope, $http) {
         );
     };
 
-    $scope.removerPedido = function(index) {
-        $scope.pedidos.splice(index,1);
+    $scope.removerPedido = function(index, id) {
+        if (confirm("Tem certeza que deseja remover o pedido #" + id + "?")) {
+            requests(
+                $http,
+                '/api/pedido',
+                'delete',
+                {
+                    id: id
+                },
+                function(r) {
+                    $scope.pedidos.splice(index, 1);
+                }
+            );
+        }
     };
-
-    /*
-    $scope.editarPedido = function(index){
-        $scope.pedido = pedidos[index];
-    };
-
-    $scope.salvarAlteracoes = function(index){
-        $scope.pedidos[index] = $scope.pedido;
-    };
-    */
 
     $scope.adicionarItem = function(){
         $scope.item.produto = $scope.produtos[$scope.index_produto]

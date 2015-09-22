@@ -20,7 +20,7 @@ urlpatterns = patterns(
     url(r'^produto/?$', Produto.as_view()),
     url(r'^pedido/?$', PedidoListar.as_view()),
     url(r'^pedido/cadastrar/?$', PedidoForm.as_view()),
-    url(r'^pedido/alterar/?$', PedidoForm.as_view()),
+    url(r'^pedido/alterar/([0-9]{1,11})/?$', PedidoForm.as_view()),
 
     # API URLS
     url(r'^api/produto/?$', ApiProduto.as_view()),

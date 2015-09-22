@@ -64,5 +64,16 @@
             <input type="submit" ng-disabled="pedido.itens.length < 1 || pedido_form.pedido_cliente.$invalid"class="btn btn-success"  value="Gerar pedido" />
         </form>
     </div>
+    {% if editable == 1 %}
+        <h1>Editando</h1>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var appElement = document.querySelector('[ng-app=pedidoApp]');
+                var appScope = angular.element(appElement).scope();
+                var controllerScope = appScope['$$childHead'];
+                controllerScope.carregarPedido('{{ pedidoId }}');
+            });
+        </script>
+    {% endif %}
 </body>
 </html>
