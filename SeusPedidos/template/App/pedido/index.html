@@ -18,7 +18,7 @@
                     <td width="180px">Valor total</td>
                     <td width="150px">Status</td>
                     <td width="200px">Data</td>
-                    <td width="140px">Opcoes</td>
+                    <td width="230px">Opcoes</td>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +29,7 @@
                     <td>{[{_pedido.status_description}]}</td>
                     <td>{[{_pedido.data_hora}]}</td>
                     <td>
+                        <button ng-click="enviarEmail($index, _pedido.id)" class="btn btn-warning btn-xs">Enviar e-mail</button>
                         <a href="/pedido/alterar/{[{_pedido.id}]}" class="btn btn-info btn-xs">Editar</a>
                         <button ng-click="removerPedido($index, _pedido.id)" class="btn btn-danger btn-xs">Remover</button>
                     </td>

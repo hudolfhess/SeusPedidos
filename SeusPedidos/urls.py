@@ -11,6 +11,7 @@ from SeusPedidos.App.views.pedido import PedidoForm, PedidoListar
 from SeusPedidos.Api.views.produto import Produto as ApiProduto
 from SeusPedidos.Api.views.cliente import Cliente as ApiCliente
 from SeusPedidos.Api.views.pedido import Pedido as ApiPedido
+from SeusPedidos.Api.views.pedido import PedidoEmail as ApiPedidoEmail
 
 urlpatterns = patterns(
     '',
@@ -26,4 +27,5 @@ urlpatterns = patterns(
     url(r'^api/produto/?$', ApiProduto.as_view()),
     url(r'^api/cliente/?', ApiCliente.as_view()),
     url(r'^api/pedido/?', ApiPedido.as_view()),
+    url(r'^api/email/?$', ApiPedidoEmail.as_view())
 )

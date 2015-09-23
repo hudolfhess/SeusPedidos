@@ -136,14 +136,15 @@ INSTALLED_APPS = (
     'App.views',
     'App.testes_selenium',
     'App.testes_unitarios',
-    #'CeleryTasks',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 )
 
 TEST_RUNNER = 'discover_runner.DiscoverRunner'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'joaotestadoremailapenasteste@gmail.com'
+EMAIL_HOST_PASSWORD = 'testes123123testes'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 #BROKER_URL = 'redis://localhost:6379/0'
 #CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'

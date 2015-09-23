@@ -40,6 +40,20 @@ app.controller("pedidoCtrl", function($scope, $http) {
         );
     };
 
+    $scope.enviarEmail = function(index, id) {
+        return requests(
+            $http,
+            '/api/email',
+            'post',
+            {
+                id: id
+            },
+            function (r) {
+                console.log(r)
+            }
+        );
+    };
+
     $scope.carregarClientes = function() {
         return requests(
             $http,

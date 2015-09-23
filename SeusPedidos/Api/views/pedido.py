@@ -5,6 +5,9 @@ from SeusPedidos.App.bo.pedidobo import PedidoBO
 from SeusPedidos.App.core.apiview import ApiView
 from SeusPedidos.App.core import parser
 from SeusPedidos.App.validation.pedido import PedidoValidation
+from SeusPedidos.App.models.pedido import Pedido as PedidoModel
+from SeusPedidos.App.models.cliente import Cliente as ClienteModel
+from SeusPedidos.App.celery.send_email import send_email
 
 
 class Pedido(ApiView):
@@ -62,6 +65,33 @@ class Pedido(ApiView):
             else:
                 result = self._apiresult.error(None)
         else:
+            result = self._apiresult.error(None)
+        return HttpResponse(
+            json.dumps(result)
+        )
+
+
+class PedidoEmail(ApiView):
+    def post(self, request):
+        id = request.POST.get('id')
+        try:
+            if (id != None):
+                pedido = PedidoModel.objects.get(id=id)
+                if (pedido):
+                    cliente = ClienteModel.objects.get(id=pedido.cliente_id)
+                    send_email.delay(
+                        'Dados do pedido #' + str(pedido.id),
+                        'Confira abaixo os detalhes do pedido #' + str(pedido.id),
+                        cliente.email
+                    )
+                    pedido.status = 2
+                    pedido.save()
+                    result = self._apiresult.success(None)
+                else:
+                    result = self._apiresult.error(None)
+            else:
+                result = self._apiresult.error(None)
+        except Exception:
             result = self._apiresult.error(None)
         return HttpResponse(
             json.dumps(result)
