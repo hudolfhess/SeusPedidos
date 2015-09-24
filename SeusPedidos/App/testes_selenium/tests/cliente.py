@@ -13,8 +13,8 @@ class TestesCliente(LiveServerTestCase):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(10)
         self.acoes_cliente = AcoesCliente(self.driver)
-        call_command('flush',interactive=False)
-        call_command('loaddata', 'base.json')
+        call_command('flush',interactive=False, verbosity=0)
+        call_command('loaddata', 'base.json', verbosity=0)
 
         super(TestesCliente, self).setUp()
 

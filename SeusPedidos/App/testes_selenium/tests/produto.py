@@ -12,8 +12,8 @@ class TestesProduto(LiveServerTestCase):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(10)
         self.acoes_produto = AcoesProduto(self.driver)
-        call_command('flush',interactive=False)
-        call_command('loaddata', 'base.json')
+        call_command('flush', verbosity=0, interactive=False)
+        call_command('loaddata', 'base.json', verbosity=0)
 
         super(TestesProduto, self).setUp()
 

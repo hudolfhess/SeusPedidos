@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'App.views',
     'App.testes_selenium',
     'App.testes_unitarios',
+    'App.testes_api',
 )
 
 TEST_RUNNER = 'discover_runner.DiscoverRunner'
