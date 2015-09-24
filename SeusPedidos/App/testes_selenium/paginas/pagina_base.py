@@ -13,3 +13,6 @@ class PaginaBase:
 
     def obter_titulo(self):
         return self.driver.title
+
+    def acessar_url(self,url):
+        self.driver.get(url)
