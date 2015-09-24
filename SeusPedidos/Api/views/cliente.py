@@ -20,7 +20,7 @@ class Cliente(ApiView):
             result = {}
 
         return HttpResponse(
-            serializers.serialize('json', result)
+            serializers.serialize('json', result), mimetype='application/json'
         )
 
     def post(self, request):

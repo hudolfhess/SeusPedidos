@@ -31,6 +31,7 @@ class PedidoBO:
                     pedido.cliente_id = data['cliente_id']
                 if data.has_key('status'):
                     pedido.status = data['status']
+                pedido.save()
                 if data.has_key('itens'):
                     self.removeProductRelations(pedido.id)
                     for indexItem in data['itens']:
@@ -99,8 +100,9 @@ class PedidoBO:
         row['total'] = 0
         row['itens'] = []
         row['cliente'] = {
-            'id': cliente.nome,
-            'nome': cliente.nome
+            'id': cliente.id,
+            'nome': cliente.nome,
+            'email': cliente.email
         }
 
         for item in itens:
