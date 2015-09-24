@@ -122,9 +122,8 @@ class PedidoBO:
         row['data_hora'] = row['data_hora'].strftime('%d/%m/%Y %H:%M:%S')
         row['status_description'] = 'Em aberto'
         if (row['status'] == 2):
-            row['status'] = 'Fechado/E-mail enviado'
-        else:
-            if (row['status'] == 3):
-                row['status'] = 'Cancelado'
+            row['status_description'] = 'Fechado/E-mail enviado'
+        elif (row['status'] == 3):
+            row['status_description'] = 'Cancelado'
 
         return row
