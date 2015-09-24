@@ -8,7 +8,7 @@ __author__ = 'hcassus'
 
 class TestesApiProduto(unittest.TestCase):
 
-    def  setUp(self):
+    def setUp(self):
         self.c = Client()
         call_command('flush', interactive=False, verbosity=0)
         call_command('loaddata', 'base.json', verbosity=0)

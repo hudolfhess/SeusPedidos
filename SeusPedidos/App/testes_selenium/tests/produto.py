@@ -14,13 +14,13 @@ class TestesProduto(LiveServerTestCase):
         self.acoes_produto = AcoesProduto(self.driver)
         call_command('flush', verbosity=0, interactive=False)
         call_command('loaddata', 'base.json', verbosity=0)
+        self.url_pagina = self.live_server_url+'/produto'
 
         super(TestesProduto, self).setUp()
 
-
     def teste_cadastro_produto_valido(self):
         self.acoes_produto\
-            .acessar_pagina(self.live_server_url+'/produto')\
+            .acessar_pagina(self.url_pagina)\
                 .contar_itens()\
                 .cadastrar_item('iPad Mini 16GB','1234')\
                 .verificar_mensagem_sucesso()\
@@ -29,10 +29,18 @@ class TestesProduto(LiveServerTestCase):
 
     def teste_remocao_ultimo_produto(self):
         self.acoes_produto\
-            .acessar_pagina(self.live_server_url+'/produto')\
+            .acessar_pagina(self.url_pagina)\
                 .contar_itens()\
                 .remover_ultimo_item()\
                 .verificar_diferenca_numero_itens(-1)\
+
+    def teste_edicao_ultimo_produto(self):
+        self.acoes_produto\
+            .acessar_pagina(self.url_pagina)\
+                .contar_itens()\
+                .editar_ultimo_item('iPad Mini 2','3500')\
+                .verificar_diferenca_numero_itens(0)\
+                .validar_ultimo_item()
 
     def tearDown(self):
         self.driver.quit()

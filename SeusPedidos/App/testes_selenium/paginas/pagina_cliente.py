@@ -9,29 +9,29 @@ class PaginaCliente(PaginaBase):
 
     locator_nome = (By.ID,'clienteNome')
     locator_email = (By.ID,'clienteEmail')
+    locator_salvar = (By.XPATH,'//input[@value="Editar cliente"]')
     locator_adicionar = (By.XPATH,'//input[@value="Adicionar"]')
     locator_alerta = (By.XPATH, '//div[contains(@class,"alert")]')
     locator_nome_ultimo_cliente = (By.XPATH, '//tr[@ng-repeat="cliente in clientes"][last()]/td[1]')
     locator_email_ultimo_cliente = (By.XPATH, '//tr[@ng-repeat="cliente in clientes"][last()]/td[2]')
     locator_remover_ultimo_cliente = (By.XPATH, '//tr[@ng-repeat="cliente in clientes"][last()]/td[3]/button[text()="Remover"]')
+    locator_editar_ultimo_cliente = (By.XPATH, '//tr[@ng-repeat="cliente in clientes"][last()]/td[3]/button[text()="Editar"]')
 
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver,10)
-
-    def acessar(self):
-        self.driver.get('http://localhost:8000/cliente')
-        print self.live_server_url
 
     def contar_clientes(self):
         return len(self.driver.find_elements(By.XPATH,'//tr[@ng-repeat="cliente in clientes"]'))
 
     def preencher_nome(self, nome):
         campo_nome = self.driver.find_element(*PaginaCliente.locator_nome)
+        campo_nome.clear()
         campo_nome.send_keys(nome)
 
     def preencher_email(self, valor):
         campo_valor = self.driver.find_element(*PaginaCliente.locator_email)
+        campo_valor.clear()
         campo_valor.send_keys(valor)
 
     def clicar_adicionar(self):
@@ -56,3 +56,11 @@ class PaginaCliente(PaginaBase):
         elemento_ultimo_cliente.click()
         self.driver.switch_to_alert().accept()
         self.wait.until(EC.staleness_of(elemento_ultimo_cliente))
+
+    def editar_ultimo_cliente(self):
+        elemento_editar_ultimo_cliente = self.driver.find_element(*PaginaCliente.locator_editar_ultimo_cliente)
+        elemento_editar_ultimo_cliente.click()
+
+    def clicar_editar_item(self):
+        botao_salvar_alteracoes = self.driver.find_element(*PaginaCliente.locator_salvar)
+        botao_salvar_alteracoes.click()

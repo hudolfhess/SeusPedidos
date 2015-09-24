@@ -1,23 +1,17 @@
 from SeusPedidos.App.testes_selenium.paginas.pagina_produto import PaginaProduto
+from SeusPedidos.App.testes_selenium.steps.acoes_base import AcoesBase
 
 __author__ = 'hcassus'
 
-class AcoesProduto:
+class AcoesProduto(AcoesBase):
 
     def __init__(self, driver):
         self.pagina = PaginaProduto(driver)
 
-    def acessar_pagina(self,url):
-        self.pagina.acessar_url(url)
-        return self
-
     def cadastrar_item(self,nome,valor):
-        self.pagina.preencher_nome(nome)
-        self.pagina.preencher_valor(valor)
+        self.alterar_nome(nome)
+        self.alterar_valor(valor)
         self.pagina.clicar_adicionar()
-
-        self.nome_produto = nome
-        self.valor_produto = valor
         return self
 
     def contar_itens(self):
@@ -40,3 +34,21 @@ class AcoesProduto:
     def remover_ultimo_item(self):
         self.pagina.remover_ultimo_produto()
         return self
+
+    def editar_ultimo_item(self,nome,valor):
+        self.pagina.editar_ultimo_produto()
+        self.alterar_nome(nome)
+        self.alterar_valor(valor)
+        self.pagina.clicar_salvar_alteracoes()
+        return self
+
+    def alterar_nome(self,nome):
+        self.pagina.preencher_nome(nome)
+        self.nome_produto = nome
+        return self
+
+    def alterar_valor(self,valor):
+        self.pagina.preencher_valor(valor)
+        self.valor_produto = valor
+        return self
+

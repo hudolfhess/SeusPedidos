@@ -1,20 +1,16 @@
 from SeusPedidos.App.testes_selenium.paginas.pagina_cliente import PaginaCliente
+from SeusPedidos.App.testes_selenium.steps.acoes_base import AcoesBase
 
 __author__ = 'hcassus'
 
-class AcoesCliente:
+class AcoesCliente(AcoesBase):
 
     def __init__(self, driver):
         self.pagina = PaginaCliente(driver)
 
-    def acessar_pagina(self,url):
-        #self.pagina.acessar()
-        self.pagina.acessar_url(url)
-        return self
-
     def cadastrar_cliente(self,nome,email):
-        self.pagina.preencher_nome(nome)
-        self.pagina.preencher_email(email)
+        self.alterar_nome(nome)
+        self.alterar_email(email)
         self.pagina.clicar_adicionar()
 
         self.nome_cliente = nome
@@ -40,4 +36,21 @@ class AcoesCliente:
 
     def remover_ultimo_cliente(self):
         self.pagina.remover_ultimo_cliente()
+        return self
+
+    def editar_ultimo_cliente(self,nome,email):
+        self.pagina.editar_ultimo_cliente()
+        self.alterar_nome(nome)
+        self.alterar_email(email)
+        self.pagina.clicar_editar_item()
+        return self
+
+    def alterar_email(self,email):
+        self.pagina.preencher_email(email)
+        self.email_cliente = email
+        return self
+
+    def alterar_nome(self,nome):
+        self.pagina.preencher_nome(nome)
+        self.nome_cliente = nome
         return self
