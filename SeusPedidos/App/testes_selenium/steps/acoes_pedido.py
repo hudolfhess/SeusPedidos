@@ -11,8 +11,9 @@ class AcoesPedido:
         self.paginaLista = PaginaListaPedidos(driver)
         self.paginaEdicao = PaginaEdicaoPedidos(driver)
 
-    def acessar_pagina(self):
-        self.paginaLista.acessar()
+    def acessar_pagina(self,url):
+        #self.pagina.acessar()
+        self.paginaLista.acessar_url(url)
         return self
 
     def contar_pedidos(self):

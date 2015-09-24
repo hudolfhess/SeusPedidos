@@ -1,4 +1,3 @@
-from time import sleep
 from SeusPedidos.App.testes_selenium.paginas.pagina_produto import PaginaProduto
 
 __author__ = 'hcassus'
@@ -8,8 +7,8 @@ class AcoesProduto:
     def __init__(self, driver):
         self.pagina = PaginaProduto(driver)
 
-    def acessar_pagina(self):
-        self.pagina.acessar()
+    def acessar_pagina(self,url):
+        self.pagina.acessar_url(url)
         return self
 
     def cadastrar_item(self,nome,valor):

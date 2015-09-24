@@ -14,6 +14,7 @@ class PaginaListaPedidos(PaginaBase):
 
     def acessar(self):
         self.driver.get('http://localhost:8000/pedido')
+        print self.live_server_url
 
     def contar_pedidos(self):
         return len(self.driver.find_elements(*PaginaListaPedidos.locator_todos_pedidos))

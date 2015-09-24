@@ -21,6 +21,7 @@ class PaginaCliente(PaginaBase):
 
     def acessar(self):
         self.driver.get('http://localhost:8000/cliente')
+        print self.live_server_url
 
     def contar_clientes(self):
         return len(self.driver.find_elements(By.XPATH,'//tr[@ng-repeat="cliente in clientes"]'))

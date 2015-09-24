@@ -17,6 +17,7 @@ class PaginaProduto(PaginaBase):
 
     def acessar(self):
         self.driver.get('http://localhost:8000/produto')
+        print self.live_server_url
 
     def contar_itens(self):
         return len(self.driver.find_elements(By.XPATH,'//tr[@ng-repeat="produto in produtos"]'))
@@ -47,7 +48,7 @@ class PaginaProduto(PaginaBase):
         return valor_ultimo_produto.text
 
     def remover_ultimo_produto(self):
-        elemento_ultimo_produto = self.driver.find_element(*PaginaProduto.locator_remover_ultimo_produto)
-        elemento_ultimo_produto.click()
+        elemento_remover_ultimo_produto = self.driver.find_element(*PaginaProduto.locator_remover_ultimo_produto)
+        elemento_remover_ultimo_produto.click()
         self.driver.switch_to_alert().accept()
-        self.wait.until(EC.staleness_of(elemento_ultimo_produto))
+        self.wait.until(EC.staleness_of(elemento_remover_ultimo_produto))

@@ -7,8 +7,9 @@ class AcoesCliente:
     def __init__(self, driver):
         self.pagina = PaginaCliente(driver)
 
-    def acessar_pagina(self):
-        self.pagina.acessar()
+    def acessar_pagina(self,url):
+        #self.pagina.acessar()
+        self.pagina.acessar_url(url)
         return self
 
     def cadastrar_cliente(self,nome,email):

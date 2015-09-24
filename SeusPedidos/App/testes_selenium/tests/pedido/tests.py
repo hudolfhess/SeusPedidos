@@ -1,33 +1,38 @@
-from django.utils import unittest
+from django.core.management import call_command
+from django_liveserver.testcases import LiveServerTestCase
 from selenium import webdriver
 from SeusPedidos.App.testes_selenium.steps.acoes_pedido import AcoesPedido
 
 __author__ = 'hcassus'
 
 
-class TestesPedido(unittest.TestCase):
+class TestesPedido(LiveServerTestCase):
 
-    @classmethod
-    def setUpClass(self):
+
+    def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(10)
         self.acoes_pedido = AcoesPedido(self.driver)
+        call_command('flush',interactive=False)
+        call_command('loaddata', 'base.json')
+
+        super(TestesPedido, self).setUp()
 
     def teste_cadastro_pedido_valido(self):
         self.acoes_pedido\
-            .acessar_pagina()\
+            .acessar_pagina(self.live_server_url+'/pedido')\
                 .contar_pedidos()\
-                .cadastrar_pedido('Hudolf Hess', [('MacBook Air',10,5),('iPad 16GB',10,0)])\
+                .cadastrar_pedido('Hudolf Hess', [('iPad Air 2',10,5),('Mac Book 256GB Intel Core M',10,0)])\
                 .verificar_diferenca_numero_pedidos(1)\
                 .validar_ultimo_pedido()
 
     def teste_remocao_ultimo_produto(self):
         self.acoes_pedido\
-            .acessar_pagina()\
+            .acessar_pagina(self.live_server_url+'/pedido')\
                 .contar_pedidos()\
                 .remover_ultimo_pedido()\
                 .verificar_diferenca_numero_pedidos(-1)
 
-    @classmethod
-    def tearDownClass(self):
+    def tearDown(self):
         self.driver.quit()
+        super(TestesPedido, self).tearDown()
