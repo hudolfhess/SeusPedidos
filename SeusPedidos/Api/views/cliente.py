@@ -25,14 +25,14 @@ class Cliente(ApiView):
         )
 
     def post(self, request):
-        form = ClienteForm(request.POST)
+        form = ClienteForm(self._postData)
         if form.is_valid():
-            id = request.POST.get('id')
+            id = self._postData.get('id')
             if (id == None):
                 try:
                     cliente = ClienteModel.objects.create(
-                        nome=request.POST.get('nome'),
-                        email=request.POST.get('email')
+                        nome=self._postData.get('nome'),
+                        email=self._postData.get('email')
                     )
                     if (cliente != None):
                         result = self._apiresult.success(None)
@@ -43,8 +43,8 @@ class Cliente(ApiView):
             else:
                 try:
                     cliente = ClienteModel.objects.get(id=id)
-                    cliente.nome = request.POST.get('nome', cliente.nome)
-                    cliente.email = request.POST.get('email', cliente.email)
+                    cliente.nome = self._postData.get('nome', cliente.nome)
+                    cliente.email = self._postData.get('email', cliente.email)
                     cliente.save()
                     result = self._apiresult.success(None)
                 except Exception:

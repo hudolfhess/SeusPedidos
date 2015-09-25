@@ -5,16 +5,14 @@ import json
 
 class PedidoValidation:
     data = {}
-    post = None
     errors = {}
 
-    def __init__(self, request):
-        if (request != None):
-            self.post = request.POST
-            self.data = parser.parse(request.POST.urlencode())
+    def __init__(self, data):
+        if (data != None):
+            self.data = data
 
     def is_valid(self):
-        form = PedidoForm(self.post)
+        form = PedidoForm(self.data)
         errors = {
             'itens': '',
             'form': None
@@ -22,8 +20,8 @@ class PedidoValidation:
         isValid = True
         if (form.is_valid()):
             if self.data.has_key('itens') and len(self.data['itens']) > 0:
-                for indexItem in self.data['itens']:
-                    item = self.data['itens'][indexItem]
+                for item in self.data['itens']:
+                    #item = self.data['itens'][indexItem]
                     if item.has_key('quantidade') == False or int(item['quantidade']) <= 0:
                         isValid = False
                         errors['itens'] = 'Item invalido'

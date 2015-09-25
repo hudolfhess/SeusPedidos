@@ -24,7 +24,7 @@ class TestesApiProduto(unittest.TestCase):
 
     def teste_cadastrar_produto(self):
 
-        self.c.post('/api/produto',{'nome':'Produto Teste','valor':'2500'})
+        self.c.post('/api/produto',{'nome':'Produto Teste','valor':'2500'}, content_type='application/json')
 
         response = self.c.get('/api/produto/')
         object_response = json.loads(response.content)
@@ -48,7 +48,7 @@ class TestesApiProduto(unittest.TestCase):
 
     def teste_atualizar_produto(self):
 
-        self.c.post('/api/produto',{'id':'2','nome':'iPad Mini 2','valor':'2499'})
+        self.c.post('/api/produto',{'id':'2','nome':'iPad Mini 2','valor':'2499'}, content_type='application/json')
 
         response = self.c.get('/api/produto/')
         object_response = json.loads(response.content)

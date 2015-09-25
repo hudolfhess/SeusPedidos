@@ -15,8 +15,8 @@ class PedidoBO:
                 data_hora=datetime.now()
             )
             if (pedido):
-                for indexItem in data['itens']:
-                    self.createProductRelations(pedido.id, data['itens'][indexItem])
+                for item in data['itens']:
+                    self.createProductRelations(pedido.id, item)
                 return True
         except Exception:
             return False
@@ -34,8 +34,8 @@ class PedidoBO:
                 pedido.save()
                 if data.has_key('itens'):
                     self.removeProductRelations(pedido.id)
-                    for indexItem in data['itens']:
-                        self.createProductRelations(pedido.id, data['itens'][indexItem])
+                    for item in data['itens']:
+                        self.createProductRelations(pedido.id, item)
                     return True
         except Exception:
             return False

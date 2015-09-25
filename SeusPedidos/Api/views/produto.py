@@ -25,14 +25,14 @@ class Produto(ApiView):
         )
 
     def post(self, request):
-        form = ProdutoForm(request.POST)
+        form = ProdutoForm(self._postData)
         if (form.is_valid() == True):
-            id = request.POST.get('id')
+            id = self._postData.get('id')
             if (id == None):
                 try:
                     produto = ProdutoModel.objects.create(
-                        nome=request.POST.get('nome'),
-                        valor=request.POST.get('valor')
+                        nome=self._postData.get('nome'),
+                        valor=self._postData.get('valor')
                     )
                     if (produto != None):
                         result = self._apiresult.success(None)
@@ -43,8 +43,8 @@ class Produto(ApiView):
             else:
                 try:
                     produto = ProdutoModel.objects.get(id=id)
-                    produto.nome = request.POST.get('nome', produto.nome)
-                    produto.valor = request.POST.get('valor', produto.valor)
+                    produto.nome = self._postData.get('nome', produto.nome)
+                    produto.valor = self._postData.get('valor', produto.valor)
                     produto.save()
                     result = self._apiresult.success(None)
                 except Exception:

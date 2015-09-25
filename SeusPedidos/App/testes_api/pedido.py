@@ -32,7 +32,7 @@ class TestesApiPedido(unittest.TestCase):
     def teste_cadastrar_pedido(self):
         dados = {
             'cliente_id': 2,
-            'itens': (
+            'itens': [
                 {
                     'quantidade': 6,
                     'desconto': 10,
@@ -51,11 +51,10 @@ class TestesApiPedido(unittest.TestCase):
                         'valor': 8499,
                     },
                 },
-            )
+            ]
         }
 
-        #response_post = self.c.post('/api/pedido',{"cliente_id": 2, "itens": {0 : {"quantidade": 6, "produto": {"valor": "3500.00", "id": 2, "nome": "iPad Air 2"}, "desconto": 10}, 1: {"quantidade": 50, "valor_unidade": "8499.00", "produto": {"valor": "8499.00", "id": 1, "nome": "Mac Book 256GB Intel Core M"}, "desconto": 10}}})
-        response_post = self.c.post('/api/pedido', dados)
+        response_post = self.c.post('/api/pedido', dados, content_type='application/json')
         print response_post
 
 
@@ -86,7 +85,31 @@ class TestesApiPedido(unittest.TestCase):
         assert object_response[0]['total'] == '37596.40'
 
     def teste_atualizar_pedido(self):
-        self.c.post('/api/pedido',{"cliente_id": 2, "itens": [{"quantidade": 6, "valor_unidade": "3500.00", "produto": {"valor": "3500.00", "id": 2, "nome": "iPad Air 2"}, "desconto": 10}, {"quantidade": 50, "valor_unidade": "8499.00", "produto": {"valor": "8499.00", "id": 1, "nome": "Mac Book 256GB Intel Core M"}, "desconto": 10}]})
+        dados = {
+            'id': 1,
+            'cliente_id': 1,
+            'itens': [
+                {
+                    'quantidade': 6,
+                    'desconto': 10,
+                    'produto': {
+                        'id': 2,
+                        'nome': 'iPad Air 2',
+                        'valor': 3500,
+                    },
+                },
+                {
+                    'quantidade': 50,
+                    'desconto': 10,
+                    'produto': {
+                        'id': 1,
+                        'nome': 'Mac Book 256GB Intel Core M',
+                        'valor': 8499,
+                    },
+                },
+            ]
+        }
+        self.c.post('/api/pedido', dados, content_type='application/json')
 
         response = self.c.get('/api/pedido/')
         object_response = json.loads(response.content)

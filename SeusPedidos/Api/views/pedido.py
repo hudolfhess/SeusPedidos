@@ -33,18 +33,16 @@ class Pedido(ApiView):
         )
 
     def post(self, request):
-        validation = PedidoValidation(request)
+        validation = PedidoValidation(self._postData)
         if (validation.is_valid() == True):
-            id = request.POST.get('id')
+            id = self._postData.get('id')
             if (id == None):
-                data = parser.parse(request.POST.urlencode())
-                if self.resultBO.insert(data):
+                if self.resultBO.insert(self._postData):
                     result = self._apiresult.success(None)
                 else:
                     result = self._apiresult.error(None)
             else:
-                data = parser.parse(request.POST.urlencode())
-                if self.resultBO.edit(data['id'], data):
+                if self.resultBO.edit(self._postData.get('id'), self._postData):
                     result = self._apiresult.success(None)
                 else:
                     result = self._apiresult.error(None)

@@ -43,16 +43,21 @@ function requests(http, url, type, form, callback) {
     }
     if (data != null) {
         delete data['$$hashKey'];
-        data = $.param(data);
+    } else {
+        data = "";
     }
 
     if (type == 'post') {
-        http.post(url, data).then(callback);
+        data = JSON.stringify(data)
+        http.post(url, data, {headers: {'Content-Type': 'application/json'}}).then(callback);
     } else if (type == 'put') {
+        data = JSON.stringify(data)
         http.put(url, data).then(callback);
     } else if (type == 'get') {
+        data = $.param(data);
         http.get(url + '?' + data).then(callback);
     } else if (type == 'delete') {
+        data = $.param(data);
         http.delete(url + '?' + data).then(callback);
     }
 }
