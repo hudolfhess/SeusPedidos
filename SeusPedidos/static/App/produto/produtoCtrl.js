@@ -23,12 +23,6 @@ app.controller("produtoCtrl", function($scope, $http) {
     };
 
     $scope.adicionaProduto = function() {
-        /*
-        var requestMethod = 'post';
-        if (typeof $scope.produto != 'undefined' && typeof $scope.produto.id != 'undefined') {
-            requestMethod = 'put';
-        }
-        */
         requests(
             $http,
             '/api/produto',
@@ -59,7 +53,11 @@ app.controller("produtoCtrl", function($scope, $http) {
                 'delete',
                 {id: id},
                 function (r) {
-                    $scope.produtos.splice(index, 1);
+                    if (r.data.success == 1) {
+                        $scope.produtos.splice(index, 1);
+                    } else {
+                        alert("Não foi possível remover o produto pois ele já está relacionado com um pedido.")
+                    }
                 }
             );
         }

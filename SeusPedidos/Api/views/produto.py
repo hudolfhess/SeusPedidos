@@ -3,6 +3,7 @@ import json
 from django.http import HttpResponse
 from django.core import serializers
 from SeusPedidos.App.models.produto import Produto as ProdutoModel
+from SeusPedidos.App.models.produto_pedido import Produto_Pedido as ProdutoPedidoModel
 from SeusPedidos.App.core.apiview import ApiView
 from SeusPedidos.App.form.produto import ProdutoForm
 
@@ -59,11 +60,15 @@ class Produto(ApiView):
 
     def delete(self, request):
         id = request.GET.get('id')
-        try:
-            produto = ProdutoModel.objects.get(id=id)
-            produto.delete()
-            result = self._apiresult.success(None)
-        except:
+        total = ProdutoPedidoModel.objects.filter(produto=id).count()
+        if (total == 0):
+            try:
+                produto = ProdutoModel.objects.get(id=id)
+                produto.delete()
+                result = self._apiresult.success(None)
+            except:
+                result = self._apiresult.error(None)
+        else:
             result = self._apiresult.error(None)
         return HttpResponse(
             json.dumps(result)

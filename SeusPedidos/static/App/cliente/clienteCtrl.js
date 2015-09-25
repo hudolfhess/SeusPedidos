@@ -53,7 +53,11 @@ app.controller("clienteCtrl", function($scope, $http) {
                 'delete',
                 {id: id},
                 function (r) {
-                    $scope.clientes.splice(index, 1);
+                    if (r.data.success == 1) {
+                        $scope.clientes.splice(index, 1);
+                    } else {
+                        alert("Não foi possível remover o cliente pois ele já está relacionado com um pedido.")
+                    }
                 }
             );
         }
