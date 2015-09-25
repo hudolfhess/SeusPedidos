@@ -21,7 +21,7 @@ class Produto(ApiView):
             result = {}
 
         return HttpResponse(
-            serializers.serialize('json', result)
+            serializers.serialize('json', result), mimetype='application/json'
         )
 
     def post(self, request):
@@ -55,7 +55,7 @@ class Produto(ApiView):
             )
 
         return HttpResponse(
-            json.dumps(result)
+            json.dumps(result), mimetype='application/json'
         )
 
     def delete(self, request):
@@ -71,5 +71,5 @@ class Produto(ApiView):
         else:
             result = self._apiresult.error(None)
         return HttpResponse(
-            json.dumps(result)
+            json.dumps(result), mimetype='application/json'
         )

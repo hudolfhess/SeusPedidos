@@ -1,5 +1,6 @@
 from SeusPedidos.App.form.pedido import PedidoForm
 from SeusPedidos.App.core import parser
+import json
 
 
 class PedidoValidation:
@@ -7,10 +8,10 @@ class PedidoValidation:
     post = None
     errors = {}
 
-    def __init__(self, post):
-        if (post != None):
-            self.post = post
-            self.data = parser.parse(post.urlencode())
+    def __init__(self, request):
+        if (request != None):
+            self.post = request.POST
+            self.data = parser.parse(request.POST.urlencode())
 
     def is_valid(self):
         form = PedidoForm(self.post)

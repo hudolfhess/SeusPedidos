@@ -55,7 +55,7 @@ class Cliente(ApiView):
             )
 
         return HttpResponse(
-            json.dumps(result)
+            json.dumps(result), mimetype='application/json'
         )
 
     def delete(self, request):
@@ -71,5 +71,5 @@ class Cliente(ApiView):
         else:
             result = self._apiresult.error(None)
         return HttpResponse(
-            json.dumps(result)
+            json.dumps(result), mimetype='application/json'
         )
