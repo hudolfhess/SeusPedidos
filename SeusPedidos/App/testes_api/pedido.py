@@ -25,11 +25,15 @@ class TestesApiPedido(unittest.TestCase):
         assert response.status_code == 200
         assert object_response[0]['cliente_id'] == 1
         assert object_response[0]['status'] == 1
-        assert object_response[0]['status_description'] == 'Em Aberto'
+        assert object_response[0]['status_description'] == 'Em aberto'
         assert object_response[0]['cliente']['id'] == 1
         assert object_response[0]['cliente']['nome'] == 'Maria Helena Tiergarten'
         assert len(object_response[0]['itens']) == 2
-        assert object_response[0]['total'] == 37596.40
+        assert object_response[0]['total'] == '37596.40'
+
+
+
+
 
     def teste_cadastrar_pedido(self):
 
@@ -43,10 +47,10 @@ class TestesApiPedido(unittest.TestCase):
         assert response.status_code == 200
         assert object_response[1]['cliente_id'] == 2
         assert object_response[1]['status'] == 1
-        assert object_response[1]['status_description'] == 'Em Aberto'
+        assert object_response[1]['status_description'] == 'Em aberto'
         assert object_response[1]['cliente']['nome'] == 'Hudolf Hess'
         assert len(object_response[1]['itens']) == 2
-        assert object_response[1]['total'] == 401355.0
+        assert object_response[1]['total'] == '401355.00'
 
     def teste_remover_pedido(self):
 
@@ -58,11 +62,11 @@ class TestesApiPedido(unittest.TestCase):
         assert response.status_code == 200
         assert object_response[0]['cliente_id'] == 1
         assert object_response[0]['status'] == 1
-        assert object_response[0]['status_description'] == 'Em Aberto'
+        assert object_response[0]['status_description'] == 'Em aberto'
         assert object_response[0]['cliente']['id'] == 1
         assert object_response[0]['cliente']['nome'] == 'Maria Helena Tiergarten'
         assert len(object_response[0]['itens']) == 2
-        assert object_response[0]['total'] == 37596.40
+        assert object_response[0]['total'] == '37596.40'
 
     def teste_atualizar_pedido(self):
 
@@ -74,8 +78,8 @@ class TestesApiPedido(unittest.TestCase):
         assert response.status_code == 200
         assert object_response[0]['cliente_id'] == 1
         assert object_response[0]['status'] == 1
-        assert object_response[0]['status_description'] == 'Em Aberto'
+        assert object_response[0]['status_description'] == 'Em aberto'
         assert object_response[0]['cliente']['id'] == 2
         assert object_response[0]['cliente']['nome'] == 'Hudolf Hess'
         assert len(object_response[0]['itens']) == 2
-        assert object_response[0]['total'] == 37596.40
+        assert object_response[0]['total'] == '37596.40'
