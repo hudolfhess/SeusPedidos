@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1879151-d745-4938-befa-0d3e834a4929" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/App/core/apiview.py" afterPath="$PROJECT_DIR$/SeusPedidos/App/core/apiview.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/Api/views/cliente.py" afterPath="$PROJECT_DIR$/SeusPedidos/Api/views/cliente.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/App/testes_api/cliente.py" afterPath="$PROJECT_DIR$/SeusPedidos/App/testes_api/cliente.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/Api/views/pedido.py" afterPath="$PROJECT_DIR$/SeusPedidos/Api/views/pedido.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/App/testes_api/pedido.py" afterPath="$PROJECT_DIR$/SeusPedidos/App/testes_api/pedido.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/App/validation/pedido.py" afterPath="$PROJECT_DIR$/SeusPedidos/App/validation/pedido.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/App/bo/pedidobo.py" afterPath="$PROJECT_DIR$/SeusPedidos/App/bo/pedidobo.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/Api/views/produto.py" afterPath="$PROJECT_DIR$/SeusPedidos/Api/views/produto.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/App/testes_api/produto.py" afterPath="$PROJECT_DIR$/SeusPedidos/App/testes_api/produto.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/static/App/requests.js" afterPath="$PROJECT_DIR$/SeusPedidos/static/App/requests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_cliente.py" afterPath="$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_cliente.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_pedidos_lista.py" afterPath="$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_pedidos_lista.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_produto.py" afterPath="$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_produto.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SeusPedidos.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,11 +57,73 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.018137848">
+            <state vertical-scroll-proportion="0.0">
               <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pagina_base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#64#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="acoes_pedido.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/steps/acoes_pedido.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pagina_cliente.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_cliente.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pagina_produto.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_produto.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="77" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pagina_pedidos_edicao.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_pedidos_edicao.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pagina_pedidos_lista.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_pedidos_lista.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.75">
+              <caret line="30" column="92" selection-start-line="30" selection-start-column="92" selection-end-line="30" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -818,11 +874,11 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22100122" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22100122" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25670946" sideWeight="0.49642858" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3122807" sideWeight="0.507326" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3122807" sideWeight="0.48290598" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3122807" sideWeight="0.48290598" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32865497" sideWeight="0.492674" order="1" side_tool="false" content_ui="tabs" />
@@ -1162,56 +1218,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_pedidos_lista.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_pedidos_edicao.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_cliente.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="77" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74185765">
-          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_produto.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.615199">
-          <caret line="36" column="74" selection-start-line="36" selection-start-column="74" selection-end-line="36" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/steps/acoes_pedido.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14475271">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/steps/acoes_produto.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.52955365">
@@ -1240,8 +1246,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.018137848">
+        <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_cliente.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_produto.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="77" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_pedidos_edicao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/steps/acoes_pedido.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SeusPedidos/App/testes_selenium/paginas/pagina_pedidos_lista.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75">
+          <caret line="30" column="92" selection-start-line="30" selection-start-column="92" selection-end-line="30" selection-end-column="92" />
           <folding />
         </state>
       </provider>
