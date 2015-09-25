@@ -1,3 +1,4 @@
+from time import sleep
 from django.core.management import call_command
 from django_liveserver.testcases import LiveServerTestCase
 from selenium import webdriver
@@ -10,7 +11,7 @@ class TestesPedido(LiveServerTestCase):
 
 
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(10)
         self.acoes_pedido = AcoesPedido(self.driver)
         call_command('flush',interactive=False, verbosity=0)
@@ -27,12 +28,21 @@ class TestesPedido(LiveServerTestCase):
                 .verificar_diferenca_numero_pedidos(1)\
                 .validar_ultimo_pedido()
 
-    def teste_remocao_ultimo_produto(self):
+    def teste_remocao_ultimo_pedido(self):
         self.acoes_pedido\
             .acessar_pagina(self.url_pagina)\
                 .contar_pedidos()\
                 .remover_ultimo_pedido()\
                 .verificar_diferenca_numero_pedidos(-1)
+
+    '''
+    def teste_edicao_ultimo_pedido(self):
+        self.acoes_pedido\
+            .acessar_pagina(self.url_pagina)\
+                .contar_pedidos()\
+                .editar_cliente_ultimo_pedido('Hudolf Hess')\
+                .
+    '''
 
     def tearDown(self):
         self.driver.quit()

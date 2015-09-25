@@ -17,24 +17,17 @@ class PaginaEdicaoPedidos(PaginaBase):
 
 
     def adicionarPedido(self):
-        botao_adicionar = self.driver.find_element(*PaginaEdicaoPedidos.locator_gerar_pedido)
-        botao_adicionar.click()
+        self.clicar_elemento(self.locator_gerar_pedido)
 
 
     def selecionarCliente(self, cliente):
-        select_cliente =  Select(self.driver.find_element(*PaginaEdicaoPedidos.locator_clientes))
-        select_cliente.select_by_visible_text(cliente)
+        self.selecionar_combo(self.locator_clientes,cliente)
 
     def adicionarItem(self, item, quantidade, desconto):
-        select_produto =  Select(self.driver.find_element(*PaginaEdicaoPedidos.locator_produtos))
-        campo_quantidade = self.driver.find_element(*PaginaEdicaoPedidos.locator_quantidade)
-        campo_desconto = self.driver.find_element(*PaginaEdicaoPedidos.locator_desconto)
-        botao_adicionar = self.driver.find_element(*PaginaEdicaoPedidos.locator_adicionar_item)
-
-        select_produto.select_by_visible_text(item)
-        campo_quantidade.send_keys(quantidade)
-        campo_desconto.send_keys(desconto)
-        botao_adicionar.click()
+        self.selecionar_combo(self.locator_produtos,item)
+        self.preencher_campo(self.locator_quantidade,quantidade)
+        self.preencher_campo(self.locator_desconto,desconto)
+        self.clicar_elemento(self.locator_adicionar_item)
 
 
 

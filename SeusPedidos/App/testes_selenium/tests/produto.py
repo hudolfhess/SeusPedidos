@@ -9,8 +9,8 @@ __author__ = 'hcassus'
 class TestesProduto(LiveServerTestCase):
 
     def setUp(self):
-        self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(10)
+        self.driver = webdriver.Chrome()
+        self.driver.implicitly_wait(5)
         self.acoes_produto = AcoesProduto(self.driver)
         call_command('flush', verbosity=0, interactive=False)
         call_command('loaddata', 'base.json', verbosity=0)

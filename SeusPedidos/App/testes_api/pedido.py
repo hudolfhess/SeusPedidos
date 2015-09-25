@@ -18,10 +18,6 @@ class TestesApiPedido(unittest.TestCase):
         response = self.c.get('/api/pedido/')
         object_response = json.loads(response.content)
 
-        '''
-        [{"cliente_id": 1, "status": 1, "status_description": "Em aberto", "cliente": {"id": "Maria Helena Tiergarten", "nome": "Maria Helena Tiergarten"}, "itens": [{"quantidade": 2, "valor_unidade": "3500.00", "produto": {"valor": "3500.00", "id": 2, "nome": "iPad Air 2"}, "id": 1, "desconto": 0}, {"quantidade": 4, "valor_unidade": "8499.00", "produto": {"valor": "8499.00", "id": 1, "nome": "Mac Book 256GB Intel Core M"}, "id": 2, "desconto": 10}], "data_hora": "23/09/2015 18:39:55", "total": "37596.40", "id": 1}]
-        '''
-
         assert response.status_code == 200
         assert object_response[0]['cliente_id'] == 1
         assert object_response[0]['status'] == 1
@@ -30,10 +26,6 @@ class TestesApiPedido(unittest.TestCase):
         assert object_response[0]['cliente']['nome'] == 'Maria Helena Tiergarten'
         assert len(object_response[0]['itens']) == 2
         assert object_response[0]['total'] == '37596.40'
-
-
-
-
 
     def teste_cadastrar_pedido(self):
 

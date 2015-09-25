@@ -19,6 +19,7 @@ class TestesApiProduto(unittest.TestCase):
         object_response = json.loads(response.content)
 
         assert response.status_code == 200
+        assert len(object_response) == 3
         assert object_response[1]['fields']['nome'] == 'iPad Air 2'
         assert object_response[1]['fields']['valor'] == 3500.0
 
@@ -30,18 +31,19 @@ class TestesApiProduto(unittest.TestCase):
         object_response = json.loads(response.content)
 
         assert response.status_code == 200
-        assert object_response[2]['fields']['nome'] == 'Produto Teste'
-        assert object_response[2]['fields']['valor'] == 2500.0
+        assert len(object_response)
+        assert object_response[3]['fields']['nome'] == 'Produto Teste'
+        assert object_response[3]['fields']['valor'] == 2500.0
 
     def teste_remover_produto(self):
 
-        self.c.delete('/api/produto',{'id':'2'})
+        self.c.delete('/api/produto',{'id':'3'})
 
         response = self.c.get('/api/produto/')
         object_response = json.loads(response.content)
 
         assert response.status_code == 200
-        assert len(object_response) == 1
+        assert len(object_response) == 2
         assert object_response[0]['pk'] == 1
         assert object_response[0]['fields']['nome'] == 'Mac Book 256GB Intel Core M'
         assert object_response[0]['fields']['valor'] == 8499.0

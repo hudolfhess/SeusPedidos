@@ -42,7 +42,7 @@ class AcoesCliente(AcoesBase):
         self.pagina.editar_ultimo_cliente()
         self.alterar_nome(nome)
         self.alterar_email(email)
-        self.pagina.clicar_editar_item()
+        self.pagina.salvar_alteracoes()
         return self
 
     def alterar_email(self,email):

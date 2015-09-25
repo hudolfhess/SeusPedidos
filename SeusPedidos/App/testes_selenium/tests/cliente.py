@@ -10,15 +10,13 @@ class TestesCliente(LiveServerTestCase):
 
 
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(10)
         self.acoes_cliente = AcoesCliente(self.driver)
         call_command('flush',interactive=False, verbosity=0)
         call_command('loaddata', 'base.json', verbosity=0)
         self.url_pagina = self.live_server_url+'/cliente'
-
         super(TestesCliente, self).setUp()
-
 
     def teste_cadastro_cliente_valido(self):
         self.acoes_cliente\
@@ -43,6 +41,7 @@ class TestesCliente(LiveServerTestCase):
                 .editar_ultimo_cliente('Hudolf Hess','hhess@meuspedidos.com.br')\
                 .verificar_diferenca_numero_clientes(0)\
                 .validar_ultimo_cliente()
+
 
     def tearDown(self):
         self.driver.quit()
