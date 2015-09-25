@@ -29,22 +29,20 @@ class Pedido(ApiView):
             result = {}
 
         return HttpResponse(
-            json.dumps(result)
+            json.dumps(result), mimetype='application/json'
         )
 
     def post(self, request):
-        validation = PedidoValidation(request.POST)
+        validation = PedidoValidation(self._postData)
         if (validation.is_valid() == True):
-            id = request.POST.get('id')
+            id = self._postData.get('id')
             if (id == None):
-                data = parser.parse(request.POST.urlencode())
-                if self.resultBO.insert(data):
+                if self.resultBO.insert(self._postData):
                     result = self._apiresult.success(None)
                 else:
                     result = self._apiresult.error(None)
             else:
-                data = parser.parse(request.POST.urlencode())
-                if self.resultBO.edit(data['id'], data):
+                if self.resultBO.edit(self._postData.get('id'), self._postData):
                     result = self._apiresult.success(None)
                 else:
                     result = self._apiresult.error(None)
@@ -54,7 +52,7 @@ class Pedido(ApiView):
             )
 
         return HttpResponse(
-            json.dumps(result)
+            json.dumps(result), mimetype='application/json'
         )
 
     def delete(self, request):
@@ -67,7 +65,7 @@ class Pedido(ApiView):
         else:
             result = self._apiresult.error(None)
         return HttpResponse(
-            json.dumps(result)
+            json.dumps(result), mimetype='application/json'
         )
 
 
@@ -94,5 +92,5 @@ class PedidoEmail(ApiView):
         except Exception:
             result = self._apiresult.error(None)
         return HttpResponse(
-            json.dumps(result)
+            json.dumps(result), mimetype='application/json'
         )

@@ -24,7 +24,7 @@ class TestesApiCliente(unittest.TestCase):
 
     def teste_cadastrar_cliente(self):
 
-        self.c.post('/api/cliente',{'nome':'Henrique Cassus','email':'henrique.casssus@meuspedidos.com.br'})
+        self.c.post('/api/cliente',{'nome':'Henrique Cassus','email':'henrique.casssus@meuspedidos.com.br'}, content_type='application/json')
 
         response = self.c.get('/api/cliente/')
         object_response = json.loads(response.content)
@@ -48,7 +48,7 @@ class TestesApiCliente(unittest.TestCase):
 
     def teste_atualizar_cliente(self):
 
-        self.c.post('/api/cliente',{'id':'1','nome':'Maria Helena Tiergarten Amarante','email':'maria@meuspedidos.com.br'})
+        self.c.post('/api/cliente',{'id':'1','nome':'Maria Helena Tiergarten Amarante','email':'maria@meuspedidos.com.br'}, content_type='application/json')
 
         response = self.c.get('/api/cliente/')
         object_response = json.loads(response.content)
