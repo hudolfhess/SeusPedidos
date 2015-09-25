@@ -24,7 +24,7 @@ class PaginaCliente(PaginaBase):
         self.wait = WebDriverWait(driver,5)
 
     def contar_clientes(self):
-        return len(self.obter_todos_elementos(By.XPATH, self.xpath_clientes))
+        return len(self.obter_todos_elementos((By.XPATH, self.xpath_clientes)))
 
     def preencher_nome(self, nome):
         self.preencher_campo(PaginaCliente.locator_nome,nome)

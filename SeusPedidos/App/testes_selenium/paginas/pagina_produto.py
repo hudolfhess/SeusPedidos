@@ -19,7 +19,7 @@ class PaginaProduto(PaginaBase):
     locator_editar_ultimo_produto = (By.XPATH, xpath_ultimo_cliente + '/td[3]/button[text()="Editar"]')
 
     def contar_itens(self):
-        return len(self.obter_todos_elementos(By.XPATH, self.xpath_clientes))
+        return len(self.obter_todos_elementos((By.XPATH, self.xpath_clientes)))
 
     def preencher_nome(self, nome):
         self.preencher_campo(self.locator_nome,nome)

@@ -14,7 +14,7 @@ class PaginaListaPedidos(PaginaBase):
 
 
     def contar_pedidos(self):
-        return len(self.obter_todos_elementos(*self.locator_todos_pedidos))
+        return len(self.obter_todos_elementos(self.locator_todos_pedidos))
 
     def obter_cliente_ultimo_pedido(self):
         self.wait.until(EC.presence_of_element_located(self.locator_cliente_ultimo_pedido))
@@ -29,6 +29,5 @@ class PaginaListaPedidos(PaginaBase):
 
     def adicionar_pedido(self):
         elemento_adicionar_pedido = self.driver.find_element(*self.locator_adicionar_pedido)
-        elemento_adicionar_pedido.click()
         self.clicar_elemento(self.locator_adicionar_pedido)
         self.wait.until(EC.staleness_of(elemento_adicionar_pedido))
